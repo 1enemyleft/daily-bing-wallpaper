@@ -26,26 +26,13 @@ function setWallpaper() {
 	killall Dock
 }
 
-# if on linux use below as setWallpaper
-<<COMMENTLinux
-# This could be used in Linux/Unix 
-gsettings set org.gnome.desktop.background picture-uri 'file:///Users/jduan/Pictures/Bing/$Date.jpg'
-echo "want to save the picture?"
-read answer
-if [ $answer == y ]
-    then
-        cp ~/$Date.jpg ~/Pictures/Wallpapers/"`date`"
-    else
-        exit
-fi
-exit
-COMMENTLinux 
-
 # check if file exist
 if [ -f /Users/jduan/Pictures/Bing/$Date.jpg ]; then
     # if exist exit
-    exit
+	echo "File exists, exiting script"
+	exit
 else 
+	echo "Downloading new wallpaper"
 	# get the wallpaper and execute
 	getWallpaper
 	setWallpaper
