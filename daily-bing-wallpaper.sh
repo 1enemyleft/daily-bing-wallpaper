@@ -6,7 +6,7 @@
 # do shell script "/usr/local/sbin/sleepwatcher -w /path/to/wake.sh &> /dev/null &"
 
 # Define variables 
-FileLocation="/Users/jduan/Pictures/Bing"
+FileLocation="/Users/{yourUserName}/Pictures/Bing"
 cd $FileLocation
 
 Date=`date +%Y-%m-%d`
