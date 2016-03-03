@@ -22,12 +22,12 @@ function getWallpaper() {
 # define set wallpaper function 
 function setWallpaper() {
 	# mac os
-	sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '/Users/jduan/Pictures/Bing/$Date.jpg'";
+	sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = FileLocation + '/$Date.jpg'";
 	killall Dock
 }
 
 # check if file exist
-if [ -f /Users/jduan/Pictures/Bing/$Date.jpg ]; then
+if [ -f FileLocation + $Date.jpg ]; then
     # if exist exit
 	echo "File exists, exiting script"
 	exit
