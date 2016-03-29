@@ -6,7 +6,7 @@
 # do shell script "/usr/local/sbin/sleepwatcher -w /path/to/wake.sh &> /dev/null &"
 
 # Define variables 
-FileLocation="/Users/jduan/Pictures/Bing"
+FileLocation="/Users/{YourDirectory}/Pictures/Bing"
 cd $FileLocation
 
 Date=`date +%Y-%m-%d`
@@ -33,19 +33,20 @@ function checkConnection() {
 	((count = 200))                            # Set maximum number to try.
 	while [[ $count -ne 0 ]] ; do
 	    ping -c 1 www.bing.com                 # Try once.
-	    successFlag=$?                          # if successFlag = 0 then success if 1 then unsuccess 
+	    successFlag=$?                         # if successFlag = 0 then success if 1 then unsuccess 
 	    if [[ $successFlag -eq 0 ]] ; then
 	        ((count = 1))                      # If okay, flag to exit loop.
 	    fi
 	    ((count = count - 1))                  # So we don't go forever.
 	done
 
-	return $successFlag 					   #return variable 
+	return $successFlag 		           #return variable 
 }
 
-# sleep 60                                     # sunsetting this sleeping method 
+# sleep 60                                         # sunsetting this sleeping method 
 
 # check if the connection is success 
+checkConnection
 
 if [[ $successFlag -eq 0 ]] ; then                  # Make final determination.
     echo "The connection is successful."
@@ -63,12 +64,7 @@ if [[ $successFlag -eq 0 ]] ; then                  # Make final determination.
 		setWallpaper
 	fi
 
-	# else not successful then standard output the following
+    # else not successful then standard output the following
 else
     echo "Your internet connection is not established."
 fi	
-
-
-
-
-
